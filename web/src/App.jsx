@@ -31,6 +31,11 @@ export default function App() {
     load()
   }
 
+  async function del(id) {
+    await fetch(`${API}/${id}`, { method: 'DELETE' })
+    load()
+  }
+
   return (
     <div className="app">
       <header>
@@ -50,6 +55,9 @@ export default function App() {
                 <div className="card-text">
                   <p>{t.title}</p>
                   {t.description && <small>{t.description}</small>}
+                </div>
+                <div className="card-actions">
+                  <button className="del" onClick={() => del(t.id)}>×</button>
                 </div>
               </div>
             ))}
