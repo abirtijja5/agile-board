@@ -1,0 +1,118 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #0f1117;
+  color: #e2e8f0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: #1a1d2e;
+  border-bottom: 1px solid #2d3148;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+h1 { font-size: 1.3rem; color: #818cf8; font-weight: 700; }
+
+form { display: flex; gap: 0.5rem; flex: 1; flex-wrap: wrap; }
+
+input {
+  flex: 1; min-width: 120px;
+  padding: 0.5rem 0.8rem;
+  background: #0f1117;
+  border: 1.5px solid #2d3148;
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  outline: none;
+}
+input:focus { border-color: #818cf8; }
+input::placeholder { color: #4b5563; }
+
+button[type="submit"] {
+  padding: 0.5rem 1rem;
+  background: #818cf8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+button[type="submit"]:hover { background: #6366f1; }
+
+.app { display: flex; flex-direction: column; height: 100vh; }
+
+main {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  align-items: flex-start;
+}
+
+section {
+  flex: 1; min-width: 240px;
+  background: #1a1d2e;
+  border-radius: 10px;
+  padding: 0.75rem;
+  min-height: 200px;
+}
+
+h2 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+h2 span {
+  background: #252840;
+  color: #94a3b8;
+  font-size: 0.72rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+}
+
+.card {
+  background: #252840;
+  border: 1px solid #2d3148;
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.card-text { flex: 1; min-width: 0; }
+.card-text p { font-size: 0.9rem; font-weight: 500; word-break: break-word; }
+.card-text small { color: #64748b; font-size: 0.78rem; display: block; margin-top: 0.2rem; }
+
+.card-actions { display: flex; gap: 0.25rem; flex-shrink: 0; }
+
+.card-actions button {
+  background: #1a1d2e;
+  border: 1px solid #2d3148;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.2rem 0.45rem;
+  border-radius: 5px;
+  line-height: 1;
+}
+.card-actions button:hover { background: #2d3148; color: #e2e8f0; }
+.card-actions button.del:hover { background: #3b1515; color: #f87171; border-color: #7f1d1d; }
