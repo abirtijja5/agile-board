@@ -36,6 +36,17 @@ export default function App() {
     load()
   }
 
+  async function move(id, status) {
+    await fetch(`${API}/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status }),
+    })
+    load()
+  }
+
+  function colIndex(status) { return COLS.findIndex(c => c.id === status) }
+
   return (
     <div className="app">
       <header>
@@ -57,6 +68,12 @@ export default function App() {
                   {t.description && <small>{t.description}</small>}
                 </div>
                 <div className="card-actions">
+                  {colIndex(t.status) > 0 && (
+                    <button onClick={() => move(t.id, COLS[colIndex(t.status) - 1].id)}>←</button>
+                  )}
+                  {colIndex(t.status) < COLS.length - 1 && (
+                    <button onClick={() => move(t.id, COLS[colIndex(t.status) + 1].id)}>→</button>
+                  )}
                   <button className="del" onClick={() => del(t.id)}>×</button>
                 </div>
               </div>
