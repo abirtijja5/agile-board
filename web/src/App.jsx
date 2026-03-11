@@ -9,6 +9,8 @@ const COLS = [
 
 export default function App() {
   const [tasks, setTasks] = useState([])
+  const [title, setTitle] = useState('')
+  const [desc,  setDesc]  = useState('')
 
   useEffect(() => { load() }, [])
 
@@ -17,9 +19,28 @@ export default function App() {
     if (res) setTasks(await res.json())
   }
 
+  async function add(e) {
+    e.preventDefault()
+    if (!title.trim()) return
+    await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: title.trim(), description: desc.trim() }),
+    })
+    setTitle(''); setDesc('')
+    load()
+  }
+
   return (
     <div className="app">
-      <header><h1>Agile Board</h1></header>
+      <header>
+        <h1>Agile Board</h1>
+        <form onSubmit={add}>
+          <input placeholder="Titre..." value={title} onChange={e => setTitle(e.target.value)} required />
+          <input placeholder="Description (optionnel)" value={desc} onChange={e => setDesc(e.target.value)} />
+          <button type="submit">+ Ajouter</button>
+        </form>
+      </header>
       <main>
         {COLS.map(col => (
           <section key={col.id}>
