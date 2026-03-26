@@ -1,0 +1,13 @@
+# Node
+node_modules/
+package-lock.json
+dist/
+.vite/
+
+# Maven
+target/
+*.class
+
+# Misc
+.env
+.DS_Store
